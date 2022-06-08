@@ -1,0 +1,6 @@
+aiogram==2.12.1
+configparser
+PyMySQL
+cryptography
+pycryptodome
+TgCrypto

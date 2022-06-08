@@ -1,0 +1,6 @@
+Pyrogram
+configparser
+PyMySQL
+cryptography
+pycryptodome
+TgCrypto

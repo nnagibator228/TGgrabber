@@ -1,0 +1,59 @@
+version: "3.8"
+
+services:
+  channeldb:
+    image: mysql
+    hostname: channeldb
+    environment:
+      MYSQL_USER: grabber
+      MYSQL_PASSWORD_FILE: /run/secrets/db_password
+      MYSQL_DATABASE: channeldb
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_password
+    networks:
+      grabber_net:
+        ipv4_address: 10.11.0.5
+    secrets:
+      - db_password
+    volumes:
+      - /opt/mysql:/var/lib/mysql
+
+  grabber:
+    image: plzdontcry/grabber:latest
+    hostname: grabber
+    networks:
+      grabber_net:
+        ipv4_address: 10.11.0.15
+    secrets:
+      - string_session
+      - db_password
+      - private_key
+    deploy:
+      resources:
+        reservations:
+          memory: 400m
+
+  grabber_control:
+    image: plzdontcry/grabber_control:latest
+    networks:
+      grabber_net:
+        ipv4_address: 10.11.0.25
+    secrets:
+      - token
+      - db_password
+      - public_key
+
+networks:
+  grabber_net:
+    external: true
+
+secrets:
+  string_session:
+    external: true
+  db_password:
+    external: true
+  token:
+    external: true
+  private_key:
+    external: true
+  public_key:
+    external: true
