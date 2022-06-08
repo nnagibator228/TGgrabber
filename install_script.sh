@@ -19,21 +19,21 @@ while [[ $# -gt 0 ]]; do
       shift
       shift
       ;;
-        -d|--databasepassword)
-          DATABASEPASS="$2"
-          shift
-          shift
-          ;;
-        -u|--adminuserid)
-          ADMINUSER="$2"
-          shift
-          shift
-          ;;
-        -t|--bottoken)
-          TOKEN="$2"
-          shift
-          shift
-          ;;
+      -d|--databasepassword)
+        DATABASEPASS="$2"
+        shift
+        shift
+        ;;
+      -u|--adminuserid)
+        ADMINUSER="$2"
+        shift
+        shift
+        ;;
+      -t|--bottoken)
+        TOKEN="$2"
+        shift
+        shift
+        ;;
     -*|--*)
       echo "Unknown option $1"
       exit 1
