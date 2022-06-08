@@ -58,15 +58,15 @@ The operation of the bot begins after setting up the desired channels in the adm
 
 #### Admin panel bot
 
-![admin panel screenshot](admin.png)
+![admin panel screenshot](content/admin.png)
 
 #### Moderate channel
 
-![moderate channel screenshot](moder.png)
+![moderate channel screenshot](content/moder.png)
 
 #### Result channel
 
-![result channel screenshot](result.png)
+![result channel screenshot](content/result.png)
 
 ## Related
 
