@@ -64,7 +64,7 @@ The operation of the bot begins after setting up the desired channels in the adm
 
 ![moderate channel screenshot](moder.png)
 
-#### Moderate channel
+#### Result channel
 
 ![result channel screenshot](result.png)
 
