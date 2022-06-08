@@ -54,6 +54,10 @@ Script also contains debug messages to detect problem stage
 
 The operation of the bot begins after setting up the desired channels in the admin panel. You must enter data about the moderation channel, the final channel, and at least one donor channel. After each change, the session of the main bot is restarted. After publishing a post in one of the donor channels, information about the post is sent to the moderation channel. To publish this entry in the final channel, you must send in response to the forwarded message from the donor channel its id, which is sent as the next message in the moderation channel.
 
+### **Important**
+
+#### **Bot needs admin rights in moder channel and result channel to work properly!**
+
 ### Usage Example (Screenshots)
 
 #### Admin panel bot
