@@ -52,16 +52,7 @@ docker swarm init
 
 echo "Packages installed"
 
-ssh-keygen -t rsa -f key -q -N ""
-
-echo "RSA keypair generated"
-
-cat key | docker secret create private_key -
-
-cat key.pub | docker secret create public_key -
-
-rm key
-rm key.pub
+echo "${RTOKEN}" | docker secret create rtoken -
 
 echo "[api]
 id = ${APIID}

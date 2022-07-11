@@ -1,29 +1,22 @@
-import socket
 import subprocess
-from secret_utils import *
-from base64 import b64decode,b64encode
-from Crypto.PublicKey import RSA
-from Crypto.Cipher import PKCS1_v1_5 as Cipher_PKCS1_v1_5
-import os
 
-sock = socket.socket()
-f = open("/run/secrets/private_key", "rb")
-key = RSA.importKey(f.read())
-f.close()
-cipher = Cipher_PKCS1_v1_5.new(key)
-sock.bind(('', 9090))
+from flask import Flask, request, abort
 
-while True:
-    sock.listen(1)
-    conn, addr = sock.accept()
-    print('connected: ', addr)
-    data = conn.recv(1024)
-    error_mess = "error"
-    decr = cipher.decrypt(data, error_mess)
-    print(decr)
-    if decr.decode("utf-8") == "restart":
-        subprocess.run(['pkill', '-f', 'bot_grabber.py'])
-        subprocess.Popen(['python3', '-u', 'bot_grabber.py'])
-        print('Выполнен рестарт сессии')
-    if decr == error_mess:
-        print("Возникла ошибка декодирования")
+app = Flask(__name__)
+
+
+@app.route('/webhook', methods=['POST'])
+def webhook():
+    if request.method == 'POST':
+        data = request.json
+        f = open("/run/secrets/rtoken", "rb")
+        rtoken = str(f.read())
+        f.close()
+        if data["token"] == rtoken and data["method"] == "restart":
+            subprocess.run(['pkill', '-f', 'bot_grabber.py'])
+            subprocess.Popen(['python3', '-u', 'bot_grabber.py'])
+            return 'success', 200
+        else:
+            abort(403)
+    else:
+        abort(400)
