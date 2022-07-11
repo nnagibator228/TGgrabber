@@ -20,3 +20,8 @@ def webhook():
             abort(403)
     else:
         abort(400)
+
+
+if __name__ == "__main__":
+    print("started.")
+    app.run(host='0.0.0.0')

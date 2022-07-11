@@ -15,5 +15,5 @@ class Sender:
             'method': mess
         }
         r = requests.post(self.url, data=json.dumps(data), headers={'Content-Type': 'application/json'})
-        return "сессия перезапущена " + str(r.json())
+        return "сессия перезапущена."
 

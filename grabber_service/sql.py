@@ -7,7 +7,7 @@ class SQL:
         self.cur = None
         self.host = dbhost
         self.user = "root"
-        self.password = "1111"
+        self.password = str(dbpassword)
         self.database = db
         self.charset = "utf8"
         self.port = 3306

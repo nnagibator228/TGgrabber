@@ -17,7 +17,7 @@ def read_cfg(secret_name):
 def read_pswd(secret_name):
     try:
         with open('/run/secrets/{0}'.format(secret_name), 'r') as secret_file:
-            return str(secret_file.readline()).replace("\n", "")
+            return str(secret_file.readline()).replace("\n", "").strip().rstrip()
     except IOError:
         print("error reading db password secret!")
         return None

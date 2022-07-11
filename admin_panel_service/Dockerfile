@@ -21,5 +21,5 @@ RUN pip3 install --upgrade pip && \
     pip3 install --no-cache-dir -r requirements.txt
 
 RUN rm -frv ./requirements.txt
-ENV script bot_restart.py
+ENV script restarter.py
 CMD python ${script}

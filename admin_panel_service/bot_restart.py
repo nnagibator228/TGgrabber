@@ -16,6 +16,7 @@ token = read_token("token")
 TOKEN = token[0]
 USER_ID = token[1]
 
+print("'"+str(read_pswd("db_password"))+"'")
 db = SQL("channeldb", "channeldb", read_pswd("db_password"))
 bot = Bot(token=TOKEN)
 storage = MemoryStorage()

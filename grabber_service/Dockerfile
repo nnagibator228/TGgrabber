@@ -14,6 +14,7 @@ COPY requirements.txt ./
 COPY secret_utils.py ./
 COPY bot_grabber.py ./
 COPY restarter.py ./
+COPY logger.py ./
 COPY sql.py ./
 
 
@@ -21,6 +22,5 @@ RUN pip3 install --upgrade pip && \
     pip3 install --no-cache-dir -r requirements.txt
 
 RUN rm -frv ./requirements.txt
-ENV script bot_grabber.py
+ENV script restarter.py
 CMD python ${script}
-CMD python restarter.py

@@ -57,6 +57,12 @@ docker swarm init
 
 echo "Packages installed"
 
+mkdir -p /var/log/grabber/
+
+mkdir -p /opt/mysql
+
+echo "Directories created."
+
 echo "${RTOKEN}" | docker secret create rtoken -
 
 echo "[api]
@@ -78,5 +84,6 @@ docker network create -d overlay --subnet=10.11.0.0/16 --attachable grabber_net
 echo "Overlay network created"
 
 docker stack deploy --compose-file stack.yml promograb
+sudo docker stack deploy --compose-file docker-compose.yml promograb
 
 echo "Stack deployed"

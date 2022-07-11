@@ -31,9 +31,12 @@ services:
       resources:
         reservations:
           memory: 400m
+    volumes:
+      - /var/log/grabber/:/logs
 
   grabber_control:
     image: plzdontcry/grabber_control:latest
+    hostname: grabbercontrol
     networks:
       grabber_net:
         ipv4_address: 10.11.0.25

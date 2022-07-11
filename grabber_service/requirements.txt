@@ -4,3 +4,4 @@ PyMySQL
 cryptography
 pycryptodome
 TgCrypto
+flask

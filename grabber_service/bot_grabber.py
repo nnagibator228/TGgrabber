@@ -1,5 +1,6 @@
 from pyrogram import Client, filters
 from datetime import datetime
+from logger import printl
 from sql import SQL
 import time
 from secret_utils import *
@@ -23,15 +24,18 @@ def get_post(client, message):
         client.send_message(bd.get_moder(), bd.get_last_rowid()[0])
 
 
-@app.on_message(filters.chat(bd.get_moder()))
+@app.on_message(filters.chat(int(bd.get_moder())))
 def send_post(client, message):
     # получаем запись в таблице
     username = bd.get_data_in_table(message)[1]
     msg_id = int(bd.get_data_in_table(message)[2])
-
+    printl(str(bd.get_data_in_table(message)))
+    printl(str(username))
+    printl(str(bd.get_channel()))
     send = app.get_messages(username, msg_id)
     # send.forward(bd.get_channel(), as_copy=True)
     send.copy(str(bd.get_channel()))
+
 
 if __name__ == '__main__':
     print(datetime.today().strftime(f'%H:%M:%S | Bot Telegram-Grabber launched.'))
