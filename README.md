@@ -43,6 +43,7 @@ Pyrogram
 - **-d / --databasepassword** - mysql database root password. Also 'll be used as password for *grabber* mysql user
 - **-u / --adminuserid** - telegram id of the user who will have access to the admin panel. Can be obtained using *@userinfobot* (telegram)
 - **-t / --bottoken** - telegram bot token to be used as the admin panel. Can be obtained using *@BotFather* (telegram)
+- **-r / --rtoken** - restart token for webhook auth
 
 Script also contains debug messages to detect problem stage
 
