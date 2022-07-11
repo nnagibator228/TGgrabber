@@ -6,7 +6,7 @@ class Sender:
     def __init__(self, hostname):
         self.url = "http://" + str(hostname) + ":5000/webhook"
         f = open("/run/secrets/rtoken", "rb")
-        self.token = str(f.read())
+        self.token = str(f.read()).strip().rstrip()
         f.close()
 
     def send(self, mess):

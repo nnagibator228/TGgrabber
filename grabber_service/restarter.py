@@ -10,7 +10,7 @@ def webhook():
     if request.method == 'POST':
         data = request.json
         f = open("/run/secrets/rtoken", "rb")
-        rtoken = str(f.read())
+        rtoken = str(f.read()).strip().rstrip()
         f.close()
         if data["token"] == rtoken and data["method"] == "restart":
             subprocess.run(['pkill', '-f', 'bot_grabber.py'])
