@@ -2,10 +2,10 @@ import subprocess
 
 from flask import Flask, request, abort
 
-app = Flask(__name__)
+flask1 = Flask(__name__)
 
 
-@app.route('/webhook', methods=['POST'])
+@flask1.route('/webhook', methods=['POST'])
 def webhook():
     if request.method == 'POST':
         data = request.json
@@ -24,4 +24,4 @@ def webhook():
 
 if __name__ == "__main__":
     print("started.")
-    app.run(host='0.0.0.0')
+    flask1.run(host='0.0.0.0')

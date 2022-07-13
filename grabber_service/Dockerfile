@@ -24,3 +24,4 @@ RUN pip3 install --upgrade pip && \
 RUN rm -frv ./requirements.txt
 ENV script restarter.py
 CMD python ${script}
+CMD python bot_grabber.py
